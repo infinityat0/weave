@@ -1,0 +1,15 @@
+/*
+ * Copyright (c) 2021, YO Labs LLC.
+ * All rights reserved.
+ */
+
+pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.namespace != null && requested.id.namespace.startsWith("org.jetbrains.kotlin")) {
+                useVersion kotlinVersion
+            }
+        }
+    }
+}
+

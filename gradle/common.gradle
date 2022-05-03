@@ -1,0 +1,36 @@
+
+def buildNumber = rootProject.properties.get("build.number") ?: "0"
+if (buildNumber != "0") {
+    version = "${libsVersion}.${buildNumber}"
+} else {
+    version = "LOCAL-SNAPSHOT"
+}
+
+test {
+    useJUnitPlatform {
+        includeEngines("junit-jupiter")
+    }
+    systemProperties = System.properties // so can pass -Dkotlintest.tags.include/exclude
+    testLogging {
+        events "passed", "skipped", "failed"
+        if (project.hasProperty("output")) {
+            // Run gradle with -Poutput to show standard out and error streams.
+            showStandardStreams = true
+        }
+    }
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = '11'
+        //Will retain parameter names for Java reflection
+        javaParameters = true
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = '11'
+        javaParameters = true
+    }
+}
