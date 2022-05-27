@@ -1,4 +1,4 @@
-package io.yolabs.libs.weavecommon
+package io.yolabs.libs.weavecommon.tlv
 
 import java.nio.ByteBuffer
 import kotlin.UByte

@@ -1,6 +1,7 @@
-package io.yolabs.libs.weavecommon
+package io.yolabs.libs.weavecommon.tlv
 
 import io.kotlintest.shouldBe
+import io.yolabs.libs.weavecommon.WeaveProfileId
 import org.junit.jupiter.api.Test
 
 class TLVDecoderTest {
