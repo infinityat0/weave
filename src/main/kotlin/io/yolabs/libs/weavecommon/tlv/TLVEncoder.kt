@@ -1,5 +1,6 @@
-package io.yolabs.libs.weavecommon
+package io.yolabs.libs.weavecommon.tlv
 
+import io.yolabs.libs.weavecommon.WeaveProfileId
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
@@ -17,8 +18,9 @@ object TLVEncoder {
 
     @Suppress("ComplexMethod")
     private fun encode(buffer: ByteBuffer, elem: Elem): ByteBuffer {
-        val (tag, value) = elem
+        val (tag, value) = Pair(elem.tag, elem.value)
         when (value) {
+            // Think about compressing numbers when we encode. This will break encoding-decoding symmetry
             is SByte      -> { encodeTag(buffer, tag, elemType = 0x00); buffer.putByte(value.value) }
             is SShort     -> { encodeTag(buffer, tag, elemType = 0x01); buffer.putShort(value.value) }
             is SInt       -> { encodeTag(buffer, tag, elemType = 0x02); buffer.putInt(value.value) }

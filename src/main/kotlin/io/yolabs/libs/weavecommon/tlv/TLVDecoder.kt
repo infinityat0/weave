@@ -1,5 +1,6 @@
-package io.yolabs.libs.weavecommon
+package io.yolabs.libs.weavecommon.tlv
 
+import io.yolabs.libs.weavecommon.WeaveProfileId
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
@@ -89,6 +90,7 @@ object TLVDecoder {
         require(buffer.remaining() >= length) { "TLV: Buffer underflow: Can't parse value into Bytes" }
 
         val array = ByteArray(length)
+        buffer.get(array)
         return Bytes(array)
     }
 

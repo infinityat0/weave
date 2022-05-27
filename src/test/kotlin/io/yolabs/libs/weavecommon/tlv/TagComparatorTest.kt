@@ -1,4 +1,4 @@
-package io.yolabs.libs.weavecommon
+package io.yolabs.libs.weavecommon.tlv
 
 import io.kotlintest.shouldBe
 import org.junit.jupiter.api.Test
@@ -13,5 +13,5 @@ class TagComparatorTest {
     }
 
     private fun compare(elem1: Elem, elem2: Elem): Int =
-        compareValuesBy(elem1, elem2, tagComparator, { it })
+        compareValuesBy(elem1, elem2, tagComparator) { it }
 }
