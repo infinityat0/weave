@@ -5,7 +5,8 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
 object TLVDecoder {
-    fun parseBytes(bytes: ByteArray, profile: WeaveProfileId? = null): Elem = parse(ByteBuffer.wrap(bytes), profile)
+    fun parseBytes(bytes: ByteArray, profile: WeaveProfileId? = null): Elem =
+        parse(ByteBuffer.wrap(bytes).order(ByteOrder.LITTLE_ENDIAN), profile)
 
     fun parse(buf: ByteBuffer, profile: WeaveProfileId? = null): Elem =
         decode(buf.order(ByteOrder.LITTLE_ENDIAN), profile)
