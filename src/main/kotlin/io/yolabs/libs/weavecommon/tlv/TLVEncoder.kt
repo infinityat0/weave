@@ -29,7 +29,7 @@ object TLVEncoder {
             is UShort     -> { encodeTag(buffer, tag, elemType = 0x05); buffer.putShort(value.value.toShort()) }
             is UInt       -> { encodeTag(buffer, tag, elemType = 0x06); buffer.putInt(value.value.toInt()) }
             is ULong      -> { encodeTag(buffer, tag, elemType = 0x07); buffer.putLong(value.value.toLong()) }
-            is Bool       -> encodeTag(buffer, tag, elemType = if (!value.value) 0x08 else 0x09)
+            is Bool       -> { encodeTag(buffer, tag, elemType = if (!value.value) 0x08 else 0x09) }
             is Float32    -> { encodeTag(buffer, tag, elemType = 0x0A); buffer.putFloat(value.value) }
             is Float64    -> { encodeTag(buffer, tag, elemType = 0x0B); buffer.putDouble(value.value) }
             is Str        -> encodeStr(buffer, tag, value)
@@ -131,5 +131,5 @@ object TLVEncoder {
     private fun encodeEOC(buffer: ByteBuffer) = buffer.putByte(0x18)
 
     // Give it a solid 4K of buffer size. That should suffice for most of our operations!
-    private const val BUF_INITIAL_SIZE = 4000
+    const val BUF_INITIAL_SIZE = 256
 }

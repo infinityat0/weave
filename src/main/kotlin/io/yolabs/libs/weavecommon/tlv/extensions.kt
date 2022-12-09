@@ -1,10 +1,11 @@
 package io.yolabs.libs.weavecommon.tlv
 
+import io.yolabs.libs.weavecommon.HEX_RADIX
+import io.yolabs.libs.weavecommon.tlv.UByte as TLVUByte
+import io.yolabs.libs.weavecommon.tlv.UInt as TLVUInt
+import io.yolabs.libs.weavecommon.tlv.ULong as TLVULong
+import io.yolabs.libs.weavecommon.tlv.UShort as TLVUShort
 import java.nio.ByteBuffer
-import kotlin.UByte
-import kotlin.UInt
-import kotlin.ULong
-import kotlin.UShort
 
 @Suppress("MagicNumber")
 fun UInt.isShort(): Boolean = this in 0u..0xFFFFu
@@ -18,8 +19,12 @@ fun ByteBuffer.byte(): Byte = this.get()
 fun ByteBuffer.putByte(byte: Byte): ByteBuffer = this.put(byte)
 
 @Suppress("MagicNumber")
-fun ByteBuffer.putAndCompress(value: Int): ByteBuffer =
-    if (value in 0..0xFFFF) this.putShort(value.toShort()) else this.putInt(value)
+fun ByteBuffer.putAndCompress(value: Int): ByteBuffer = when (value) {
+    in 0..0xFF -> this.put(value.toByte())
+    in 0x100..0xFFFF -> this.putShort(value.toShort())
+    else -> this.putInt(value)
+}
+
 fun ByteBuffer.putAndCompress(value: UInt): ByteBuffer =
     if (value.isShort()) this.putShort(value.toShort()) else this.putInt(value.toInt())
 
@@ -56,4 +61,16 @@ val tagComparator = Comparator<Elem> { x, y ->
         // Should never come here (unless it's an Implicit tag which we resolve anyways)
         else -> throw UnknownTagError
     }
+}
+
+fun ULong.hexString(): String = this.toString(HEX_RADIX)
+fun UInt.hexString(): String = this.toString(HEX_RADIX)
+fun TLVULong.hexString(): String = this.value.toString(HEX_RADIX)
+
+fun Value.widenToULong(): TLVULong = when (this) {
+    is TLVUInt   -> TLVULong(value.toULong())
+    is TLVUShort -> TLVULong(value.toULong())
+    is TLVUByte  -> TLVULong(value.toULong())
+    is TLVULong  -> this
+    else         -> error("Unsupported value type. Expected UIntN. Found $this")
 }

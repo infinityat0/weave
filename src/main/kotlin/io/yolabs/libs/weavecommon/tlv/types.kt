@@ -79,8 +79,12 @@ open class Elem(val tag: Tag, val value: Value) {
 
     override fun toString(): String = "Elem($tag, $value)"
 
+    override fun equals(that: Any?): Boolean =
+        (that != null) && (that is Elem) && (that.tag == tag) && (that.value == value)
+    override fun hashCode(): Int = tag.hashCode() + value.hashCode()
     /**
      * Encodes the TLV Element in into a LITTLE_ENDIAN buffer
      */
-    fun encode(): ByteBuffer = TLVEncoder.encode(elem = this)
+    fun encode(expectedSize: Int = TLVEncoder.BUF_INITIAL_SIZE): ByteBuffer =
+        TLVEncoder.encode(elem = this, size = expectedSize)
 }

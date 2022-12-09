@@ -45,12 +45,15 @@ apply from: "$rootDir/gradle/common.gradle"
 
 dependencies {
     implementation(
-            "com.google.api.grpc:proto-google-common-protos:1.18.0"
+            "com.google.api.grpc:proto-google-common-protos:$commonProtosVersion",
+            "org.bouncycastle:bcprov-jdk15on:$bouncyCastleVersion",
+            "org.bouncycastle:bcpkix-jdk15on:$bouncyCastleVersion",
     )
 
     testImplementation(
-            "org.junit.jupiter:junit-jupiter:$junitVersion",
-            "io.kotlintest:kotlintest-assertions:$kotlinTestAssertionVersion"
+            "io.mockk:mockk:$mockkVersion",
+            "io.kotlintest:kotlintest-runner-junit5:$junitVersion",
+            "org.junit.jupiter:junit-jupiter:$junitJupiterVersion"
     )
 }
 compileKotlin {
