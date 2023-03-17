@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2022-12-07T03:09:53" hostname="sgujjaru_mac" time="0.291">
+  <properties/>
+  <testcase name="Should decode root1.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.237"/>
+  <testcase name="Should decode root2.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.006"/>
+  <testcase name="Should decode intermediate1.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.002"/>
+  <testcase name="Should decode intermediate2.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.002"/>
+  <testcase name="Should decode nodeCert1.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.003"/>
+  <testcase name="Should decode nodeCert2.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.002"/>
+  <testcase name="Should decode nodeCert3.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.002"/>
+  <testcase name="Should decode nodeCert4.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.002"/>
+  <testcase name="Should decode nodeCert5.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.002"/>
+  <testcase name="Should decode nodeCert6.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.007"/>
+  <testcase name="Should decode nodeCert7.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.002"/>
+  <testcase name="Should decode nodeCert8.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.002"/>
+  <testcase name="Should decode nodeCert9.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.003"/>
+  <testcase name="Should decode nodeCert10.crt correctly and be similar to its TLV alternative" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.002"/>
+  <testcase name="should return a structure when certificate is converted to TLV()" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.001"/>
+  <testcase name="should be able to read a certificate from bytes()" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.001"/>
+  <testcase name="should be able to encode a certificate structure into TLV()" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.002"/>
+  <testcase name="should decode EC private key from file()" classname="io.yolabs.libs.weavecommon.security.CertAndKeyDecoderTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

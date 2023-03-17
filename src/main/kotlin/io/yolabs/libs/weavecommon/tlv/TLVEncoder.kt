@@ -18,9 +18,10 @@ object TLVEncoder {
 
     @Suppress("ComplexMethod")
     private fun encode(buffer: ByteBuffer, elem: Elem): ByteBuffer {
-        val (tag, value) = Pair(elem.tag, elem.value)
+        // We are calling compress because native TLV library will optimistically compress numeric types
+        // if they fit smaller number type boundaries
+        val (tag, value) = Pair(elem.tag, elem.value.compress())
         when (value) {
-            // Think about compressing numbers when we encode. This will break encoding-decoding symmetry
             is SByte      -> { encodeTag(buffer, tag, elemType = 0x00); buffer.putByte(value.value) }
             is SShort     -> { encodeTag(buffer, tag, elemType = 0x01); buffer.putShort(value.value) }
             is SInt       -> { encodeTag(buffer, tag, elemType = 0x02); buffer.putInt(value.value) }
@@ -29,7 +30,7 @@ object TLVEncoder {
             is UShort     -> { encodeTag(buffer, tag, elemType = 0x05); buffer.putShort(value.value.toShort()) }
             is UInt       -> { encodeTag(buffer, tag, elemType = 0x06); buffer.putInt(value.value.toInt()) }
             is ULong      -> { encodeTag(buffer, tag, elemType = 0x07); buffer.putLong(value.value.toLong()) }
-            is Bool       -> encodeTag(buffer, tag, elemType = if (!value.value) 0x08 else 0x09)
+            is Bool       -> { encodeTag(buffer, tag, elemType = if (!value.value) 0x08 else 0x09) }
             is Float32    -> { encodeTag(buffer, tag, elemType = 0x0A); buffer.putFloat(value.value) }
             is Float64    -> { encodeTag(buffer, tag, elemType = 0x0B); buffer.putDouble(value.value) }
             is Str        -> encodeStr(buffer, tag, value)
@@ -131,5 +132,5 @@ object TLVEncoder {
     private fun encodeEOC(buffer: ByteBuffer) = buffer.putByte(0x18)
 
     // Give it a solid 4K of buffer size. That should suffice for most of our operations!
-    private const val BUF_INITIAL_SIZE = 4000
+    const val BUF_INITIAL_SIZE = 256
 }

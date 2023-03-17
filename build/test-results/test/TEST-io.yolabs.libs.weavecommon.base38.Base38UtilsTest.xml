@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" tests="50" skipped="0" failures="0" errors="0" timestamp="2022-12-07T03:09:53" hostname="sgujjaru_mac" time="0.031">
+  <properties/>
+  <testcase name="Should encode int 0 to [0, 0, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode int 15 to [15, 0, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode int 255 to [-1, 0, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode int 65280 to [0, -1, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode int 16711680 to [0, 0, -1, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.001"/>
+  <testcase name="Should encode int -16777216 to [0, 0, 0, -1] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode int 65535 to [-1, -1, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.001"/>
+  <testcase name="Should encode int -65536 to [0, 0, -1, -1] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode int -1 to [-1, -1, -1, -1] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode long 0 to [0, 0, 0, 0, 0, 0, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode long 15 to [15, 0, 0, 0, 0, 0, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode long 255 to [-1, 0, 0, 0, 0, 0, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode long 65280 to [0, -1, 0, 0, 0, 0, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode long 16711680 to [0, 0, -1, 0, 0, 0, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode long 4278190080 to [0, 0, 0, -1, 0, 0, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode long 65535 to [-1, -1, 0, 0, 0, 0, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode long 4294901760 to [0, 0, -1, -1, 0, 0, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.001"/>
+  <testcase name="Should encode long 4294967295 to [-1, -1, -1, -1, 0, 0, 0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode short 0 to [0, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode short 15 to [15, 0] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode short 3840 to [0, 15] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.001"/>
+  <testcase name="Should encode short -1 to [-1, -1] correctly" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [] int " classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.001"/>
+  <testcase name="Should encode [10] int A0" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [10, 10] int OT10" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [10, 10, 10] int -N.B0" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [10, 10, 40] int Y6V91" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [10, 10, 41] int KL0B1" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [10, 10, -1] int Q-M08" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [35] int Z0" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [-1, 0] int R600" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [46, 0, 0] int 81000" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [-1] int R6" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [-1, -1] int NE71" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [-1, -1, -1] int PLS18" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100, 33] int KKHF3W2S013OPM3EJX11" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.001"/>
+  <testcase name="Should encode [] int " classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [10] int A0" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [10, 10] int OT10" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [10, 10, 10] int -N.B0" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [10, 10, 40] int Y6V91" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [10, 10, 41] int KL0B1" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [10, 10, -1] int Q-M08" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [35] int Z0" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [-1, 0] int R600" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [46, 0, 0] int 81000" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [-1] int R6" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [-1, -1] int NE71" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [-1, -1, -1] int PLS18" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.0"/>
+  <testcase name="Should encode [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100, 33] int KKHF3W2S013OPM3EJX11" classname="io.yolabs.libs.weavecommon.base38.Base38UtilsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

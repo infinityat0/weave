@@ -1,12 +1,13 @@
+@file:Suppress("MagicNumber")
 package io.yolabs.libs.weavecommon.tlv
 
+import io.yolabs.libs.weavecommon.HEX_RADIX
+import io.yolabs.libs.weavecommon.tlv.UByte as TLVUByte
+import io.yolabs.libs.weavecommon.tlv.UInt as TLVUInt
+import io.yolabs.libs.weavecommon.tlv.ULong as TLVULong
+import io.yolabs.libs.weavecommon.tlv.UShort as TLVUShort
 import java.nio.ByteBuffer
-import kotlin.UByte
-import kotlin.UInt
-import kotlin.ULong
-import kotlin.UShort
 
-@Suppress("MagicNumber")
 fun UInt.isShort(): Boolean = this in 0u..0xFFFFu
 
 fun ByteBuffer.uByte(): UByte = this.get().toUByte()
@@ -17,9 +18,11 @@ fun ByteBuffer.uLong(): ULong = this.long.toULong()
 fun ByteBuffer.byte(): Byte = this.get()
 fun ByteBuffer.putByte(byte: Byte): ByteBuffer = this.put(byte)
 
-@Suppress("MagicNumber")
-fun ByteBuffer.putAndCompress(value: Int): ByteBuffer =
-    if (value in 0..0xFFFF) this.putShort(value.toShort()) else this.putInt(value)
+fun ByteBuffer.putAndCompress(value: Int): ByteBuffer = when (value) {
+    in 0..0xFF -> this.put(value.toByte())
+    in 0x100..0xFFFF -> this.putShort(value.toShort())
+    else -> this.putInt(value)
+}
 fun ByteBuffer.putAndCompress(value: UInt): ByteBuffer =
     if (value.isShort()) this.putShort(value.toShort()) else this.putInt(value.toInt())
 
@@ -55,5 +58,43 @@ val tagComparator = Comparator<Elem> { x, y ->
         }
         // Should never come here (unless it's an Implicit tag which we resolve anyways)
         else -> throw UnknownTagError
+    }
+}
+fun ULong.hexString(): String = this.toString(HEX_RADIX)
+fun UInt.hexString(): String = this.toString(HEX_RADIX)
+fun TLVULong.hexString(): String = this.value.toString(HEX_RADIX)
+fun Value.widenToULong(): TLVULong = when (this) {
+    is TLVUInt   -> TLVULong(value.toULong())
+    is TLVUShort -> TLVULong(value.toULong())
+    is TLVUByte  -> TLVULong(value.toULong())
+    is TLVULong  -> this
+    else         -> error("Unsupported value type. Expected UIntN. Found $this")
+}
+fun Value.compress(): Value = when (this) {
+    is SignedNumber   -> compressSigned(this)
+    is UnsignedNumber -> compressUnsigned(this)
+    else              -> this
+}
+fun compressUnsigned(number: UnsignedNumber): UnsignedNumber {
+    val uLong = number.widenToULong()
+    return when (val value = uLong.value) {
+        in 0x00u..0xFFu          -> TLVUByte(value.toUByte())
+        in 0x100u..0xFFFFu       -> TLVUShort(value.toUShort())
+        in 0x10000u..0xFFFFFFFFu -> TLVUInt(value.toUInt())
+        else -> uLong // spacing varies depending on use of ligatures/intelliJ hints. So, reverting to regular spaces
+    }
+}
+fun compressSigned(number: SignedNumber): SignedNumber {
+    val longValue = when (number) {
+        is SByte  -> number.value.toLong()
+        is SShort -> number.value.toLong()
+        is SInt   -> number.value.toLong()
+        is SLong  -> number.value
+    }
+    return when (longValue) {
+        in 0..0xFF               -> SByte(longValue.toByte())
+        in 0x100..0xFFFF         -> SShort(longValue.toShort())
+        in 0x10000..0xFFFFFFFF   -> SInt(longValue.toInt())
+        else -> number // spacing varies depending on use of ligatures/intelliJ hints. So, reverting to regular spaces
     }
 }

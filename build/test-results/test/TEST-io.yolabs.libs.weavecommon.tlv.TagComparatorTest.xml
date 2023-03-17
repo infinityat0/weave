@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2022-12-07T03:09:53" hostname="sgujjaru_mac" time="0.016">
+  <properties/>
+  <testcase name="comparing AnonymousTag with AnonymousTag should return 0" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing AnonymousTag with ContextTag(value=42) should return -1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing AnonymousTag with ProfileTag(profile=WeaveProfileId(vendorId=0, profileId=0), value=0) should return -1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing AnonymousTag with ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=0) should return -1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.001"/>
+  <testcase name="comparing ContextTag(value=42) with AnonymousTag should return 1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing ContextTag(value=0) with ContextTag(value=42) should return -1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing ContextTag(value=42) with ContextTag(value=42) should return 0" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing ContextTag(value=42) with ContextTag(value=0) should return 1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.001"/>
+  <testcase name="comparing ContextTag(value=42) with ProfileTag(profile=WeaveProfileId(vendorId=0, profileId=0), value=0) should return -1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing ContextTag(value=42) with ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=0) should return -1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=0) with AnonymousTag should return 1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=0) with ContextTag(value=0) should return 1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=0) with ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=0) should return 0" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.001"/>
+  <testcase name="comparing ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=9) with ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=9) should return 0" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.001"/>
+  <testcase name="comparing ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=0) with ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=9) should return -1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=9) with ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=0) should return 1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.001"/>
+  <testcase name="comparing ProfileTag(profile=WeaveProfileId(vendorId=9050, profileId=10), value=0) with ProfileTag(profile=WeaveProfileId(vendorId=9050, profileId=20), value=0) should return -1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing ProfileTag(profile=WeaveProfileId(vendorId=9050, profileId=20), value=0) with ProfileTag(profile=WeaveProfileId(vendorId=9050, profileId=10), value=0) should return 1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=0) with ProfileTag(profile=WeaveProfileId(vendorId=9050, profileId=10), value=0) should return 1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.0"/>
+  <testcase name="comparing ProfileTag(profile=WeaveProfileId(vendorId=9050, profileId=10), value=0) with ProfileTag(profile=WeaveProfileId(vendorId=65535, profileId=10), value=0) should return -1" classname="io.yolabs.libs.weavecommon.tlv.TagComparatorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

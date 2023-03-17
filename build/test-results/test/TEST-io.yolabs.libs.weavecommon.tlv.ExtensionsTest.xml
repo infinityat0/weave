@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" tests="23" skipped="0" failures="0" errors="0" timestamp="2022-12-07T03:09:53" hostname="sgujjaru_mac" time="0.015">
+  <properties/>
+  <testcase name="Should compress Int(0) to 1 bytes" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Should compress Int(1) to 1 bytes" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.001"/>
+  <testcase name="Should compress Int(66) to 1 bytes" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Should compress Int(255) to 1 bytes" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.001"/>
+  <testcase name="Should compress Int(256) to 2 bytes" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Should compress Int(65535) to 2 bytes" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Should compress Int(65536) to 4 bytes" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.001"/>
+  <testcase name="Should compress Int(131071) to 4 bytes" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Should compress Int(-1) to 4 bytes" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="checking UInt can fit in a short()" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Byte(0).asInt() should return 0" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Byte(1).asInt() should return 1" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.001"/>
+  <testcase name="Byte(127).asInt() should return 127" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Byte(-128).asInt() should return 128" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Byte(-1).asInt() should return 255" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Short(0).asInt() should return 0" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Short(1).asInt() should return 1" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Short(127).asInt() should return 127" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Short(128).asInt() should return 128" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Short(32767).asInt() should return 32767" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.001"/>
+  <testcase name="Short(-32768).asInt() should return 32768" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <testcase name="Short(-1).asInt() should return 65535" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.001"/>
+  <testcase name="compressing UInt to fit into the byte buffer()" classname="io.yolabs.libs.weavecommon.tlv.ExtensionsTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
