@@ -40,6 +40,7 @@ apply plugin: 'java-library'
 apply plugin: 'kotlin'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'idea'
+apply plugin: 'maven-publish'
 
 apply from: "$rootDir/gradle/common.gradle"
 
@@ -59,5 +60,27 @@ dependencies {
 compileKotlin {
     kotlinOptions {
         languageVersion = "1.5"
+    }
+}
+
+repositories {
+    // Limit maven local to only snapshot builds.
+    mavenLocal {
+        content {
+            includeVersionByRegex('io.sunny.libs.weave', '.*', 'LOCAL-SNAPSHOT')
+        }
+    }
+    mavenCentral()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'io.sunny.libs'
+            artifactId = 'weave'
+            version = "LOCAL-SNAPSHOT"
+
+            from components.java
+        }
     }
 }
