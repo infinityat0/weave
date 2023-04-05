@@ -126,7 +126,7 @@ object CertAndKey {
 
     fun x509ToTLV(cert: X509Certificate): TLVCertificate =
         with(cert) {
-            val publicKeyInfo =  SubjectPublicKeyInfo.getInstance(publicKey.encoded)
+            val publicKeyInfo = SubjectPublicKeyInfo.getInstance(publicKey.encoded)
             TLVCertificate(
                 serialNum = SerialNumber(Bytes(serialNumber.toByteArray())),
                 signatureAlgo = tlvEncodeSigAlgo(sigAlgOID),
